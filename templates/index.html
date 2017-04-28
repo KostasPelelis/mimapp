@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block title %}Mimapp{% endblock %}
+
+{% block body %}
+<div class="ui middle aligned center aligned grid">
+	<div class="column login-form">
+		<h2 class="ui teal header">Login</h2>
+  		<form class="ui large form" action="/login" method="post" id="login">
+  			<div class="ui stacked segment">
+				<div class="field">
+					<div class="ui left icon input">
+						<i class="user icon"></i>					
+						<input type="text" name="username" placeholder="Username">
+					</div>
+				</div>
+				<div class="field">
+					<div class="ui left icon input">
+						<i class="server icon"></i>					
+						<input type="text" name="server" placeholder="imap.example.com">
+					</div>
+				</div>
+
+				<div class="field">
+					<div class="ui left icon input">
+						<i class="lock icon"></i>					
+						<input type="password" name="password" placeholder="Password">
+					</div>
+				</div>  				
+  			</div>
+			<button class="ui fluid large teal button" type="submit">Login</button>
+		</form>
+  	</div>
+</div>
+
+{% endblock %}

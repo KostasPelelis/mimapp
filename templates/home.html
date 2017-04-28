@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block title %}Mimapp{% endblock %}
+
+{% block body %}
+<div class="ui grid mails">
+	<div class="two wide column">
+		<div class="ui vertical menu tabular">
+			{% for folder in folders %}
+		  	<a class="teal item" data-tab="{{folder.name}}">
+		    	{{folder.name}}
+		    	<div class="ui teal left pointing label">{{ folder.mails | length }}</div>
+		  	</a>
+		  	{% endfor %}
+		    <div class="ui transparent icon input">
+		      <input type="text" placeholder="Search mail...">
+		      <i class="search icon"></i>
+		    </div>
+		</div>
+	</div>
+	<div class="six wide column">
+		{% for folder in folders %}
+		<div class="ui tab" data-tab="{{folder.name}}">
+			<h2>{{folder.name}}</h2>
+			<div class="ui relaxed divided list">
+			{% for mail in folder.mails %}
+			 	<div class="item">
+			    	<div class="content">
+			      		<a class="header mail-selector" data-folder="{{folder.name}}" data-id={{loop.index}}>{{mail.headers.subject}}</a>
+			      		<div class="description">From: {{mail.headers.from}}</div>
+			    	</div>
+			  	</div>
+			{% endfor %}
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	<div class="six wide column mail-container">
+	{% for folder in folders%}
+		{% for mail in folder.mails %}
+			<div class="mail-area hidden" id="{{folder.name}}-{{loop.index}}">
+				<h2>From: {{mail.headers.from}}/h2>
+				<h2>To: {{mail.headers.to}}</h2>
+				<h2>Subject: {{mail.headers.subject}}</h2>
+				<span>
+					{{mail.body | safe}}
+				</span>
+			</div>
+		{% endfor %}
+	{% endfor %}
+	</div>
+</div>
+{% endblock %}

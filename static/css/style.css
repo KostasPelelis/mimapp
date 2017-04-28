@@ -1,0 +1,25 @@
+body > .grid {
+	height: 100%;
+}
+
+.mails {
+	padding: 1em !important;
+}
+
+.hidden {
+	visibility: hidden;
+}
+
+.mail-area {
+	top: 0px;
+	left: 0px;
+	position:  absolute; !important;
+}
+
+.mail-container {
+	position: relative !important;
+}
+
+.login-form {
+	max-width: 400px;
+}
